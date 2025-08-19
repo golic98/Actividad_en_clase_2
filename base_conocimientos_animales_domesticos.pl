@@ -9,5 +9,5 @@ come(perro, carne).
 come(gato, carne).
 come(conejo, zanahoria).
 % Regla
-comida(X) :- domestico(X), X \= gato.
+comida(X) :- domestico(X), X \= gato,  X\= perro.
 
