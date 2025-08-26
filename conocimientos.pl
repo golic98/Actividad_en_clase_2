@@ -1,29 +1,85 @@
-% Personas presentes
-persona(alice).
-persona(robert).
+% Hijos
+hijo(clara, mariela).
+hijo(rodolfo, mariela).
+hijo(ismael, mariela).
+hijo(lucas, rodolfo).
+hijo(clara, esteban).
+hijo(rodolfo, esteban).
+hijo(ismael, esteban).
+hijo(martina, rodolfo).
+hijo(martina, teresa).
+
+% amigos
+amigo(ismael, hector).
+
+% casados
+casado(esteban, mariela).
+casado(mariela, esteban).
+casado(andres, clara).
+casado(clara, andres).
+casado(teresa, rodolfo).
+casado(rodolfo, teresa).
+casado(catalina, andres).
+casado(andres, catalina).
+casado(alonso, doña_beatriz).
+casado(doña_beatriz, alonso).
+
+% Oficios
+oficio(hector, herrero).
+oficio(teresa, tejedora).
+oficio(clara, maestra).
+oficio(catalina, curandera).
+oficio(felipe, explorador).
+oficio(emilia, ceramista).
+oficio(mateo, agricultor).
+oficio(irene, criadora, vendedora).
+oficio(rodolfo, agricultor).
+oficio(lucas, herrero).
+
+% Rivalidad
+rival(rodolfo, felipe).
+rival(clara, catalina).
+
+% Veneraban cultos
+verenaban(espiritu_agua, rivoria).
+veneraban(espiritu_montaña, montelar).
+veneraban(espiritu_tierra, durania).
+
+% Aldeas
+aldea(rivoria).
+aldea(montelar).
+aldea(durania).
+
+% Personas
+persona(don_esteban).
+persona(doña_maricela).
 persona(clara).
-persona(james).
+persona(rodolfo).
+persona(ismael).
+persona(andres).
+persona(sofia).
+persona(teresa).
+persona(lucas).
+persona(martina).
+persona(hector).
+persona(don_alonso).
+persona(doña_beatriz).
+persona(felipe).
+persona(catalina).
+persona(emilia).
+persona(mateo).
+persona(irene).
 
-% Relaciones
-esposo(alice, lord_henry).
-sobrina(clara, lord_henry).
-socio(james, lord_henry).
-empleado(robert, lord_henry).
+% Ubicacion
+vive_en(don_esteban, rivoria).
+vive_en(doña_maricela, rivoria).
+vive_en(clara, rivoria).
+vive_en(rodolfo, rivoria).
+vive_en(ismael, rivoria).
+vive_en(hector, rivoria).
+vive_en(teresa, rivoria).
+vive_en(lucas, rivoria).
 
-% Motivos (quién podría tener razones)
-motivo(alice, herencia).
-motivo(robert, maltrato).
-motivo(clara, deuda).
-motivo(james, negocios).
-
-% Medios (quién tuvo acceso al arma)
-acceso(alice, veneno).
-acceso(robert, cuchillo).
-acceso(clara, cuerda).
-acceso(james, pistola).
-
-% Oportunidad (quién estuvo en la biblioteca)
-estuvo(alice, sala).
-estuvo(robert, cocina).
-estuvo(clara, biblioteca).
-estuvo(james, estudio).
+% Pactos
+pacto(rivoria, durania).
+pacto(durania, rivoria).
