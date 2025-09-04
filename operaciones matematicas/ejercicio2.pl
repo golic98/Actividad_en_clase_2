@@ -6,4 +6,4 @@ par_impar(X) :-
     (0 is X mod 2
     -> write('par')
     ;  write('impar')
-    )
+    ).
