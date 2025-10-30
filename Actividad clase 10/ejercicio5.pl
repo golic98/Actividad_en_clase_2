@@ -130,6 +130,9 @@ maxDivisor(N, D, R, Iterate) :-
         maxDivisor(N, D, R, Iterate + 1)
     ).
 
+% Consultas:
+% suma(frac(2,7), frac(8,7), frac(N, D)).
+% suma(frac(2,5), frac(3,10), frac(N, D)).
 
 % ## 🧠 5. Resolución simbólica sencilla
 
