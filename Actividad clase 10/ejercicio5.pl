@@ -1,5 +1,4 @@
-## 🔹 1. Simplificación simbólicza
-
+% ## 🔹 1. Simplificación simbólicza
 % --- Simplificador que acepta términos escritos con +(A,B) y *(A,B) ---
 
 % Variables y atómicos quedan igual
@@ -31,7 +30,7 @@ simplify_op('*', A, 1, A) :- !.
 simplify_op('*', A, B, R) :-
     R =.. ['*', A, B].
 
---------------------------Víctor-------------------------------------------------
+% --------------------------Víctor-------------------------------------------------
 evalua(X, X, V, V).
 
 
@@ -104,8 +103,9 @@ derivada(E1 ** N, X, D) :-
 
 %consulta: derivada(x*x + 3*x + 2, x, D), evalua(D, x, 2, R).
 %respuesta: D = 1*x+x*1+(0*x+3*1)+0, R = 7
--------------------------------------Víctor----------------------------------------------
-## 🧠 5. Resolución simbólica sencilla
+% -------------------------------------Víctor----------------------------------------------
+
+% ## 🧠 5. Resolución simbólica sencilla
 
 **15.** Resuelva la ecuación:  
 % Caso donde la variable aparece primero: X + N = M.
