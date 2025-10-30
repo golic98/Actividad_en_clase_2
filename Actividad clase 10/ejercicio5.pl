@@ -31,8 +31,80 @@ simplify_op('*', A, 1, A) :- !.
 simplify_op('*', A, B, R) :-
     R =.. ['*', A, B].
 
+--------------------------Víctor-------------------------------------------------
+evalua(X, X, V, V).
 
 
+evalua(N, _, _, N) :- number(N).
+
+
+evalua(E1 + E2, X, V, R) :-
+    evalua(E1, X, V, R1),
+    evalua(E2, X, V, R2),
+    R is R1 + R2.
+
+
+evalua(E1 - E2, X, V, R) :-
+    evalua(E1, X, V, R1),
+    evalua(E2, X, V, R2),
+    R is R1 - R2.
+
+
+evalua(E1 * E2, X, V, R) :-
+    evalua(E1, X, V, R1),
+    evalua(E2, X, V, R2),
+    R is R1 * R2.
+
+
+evalua(E1 / E2, X, V, R) :-
+    evalua(E1, X, V, R1),
+    evalua(E2, X, V, R2),
+    R is R1 / R2.
+
+
+evalua(E1 ** E2, X, V, R) :-
+    evalua(E1, X, V, R1),
+    evalua(E2, X, V, R2),
+    R is R1 ** R2.
+
+%consulta: evalua(x*x + 3*x + 2, x, 3, R).
+%R=20
+%consulta: evalua(x*x - 4*x + 4, x, 2, R).
+%R=0
+
+
+
+
+derivada(C, _, 0) :- number(C).
+derivada(X, X, 1).
+derivada(Y, _, 0) :- atom(Y).
+
+derivada(E1 + E2, X, D1 + D2) :-
+    derivada(E1, X, D1),
+    derivada(E2, X, D2).
+
+derivada(E1 - E2, X, D1 - D2) :-
+    derivada(E1, X, D1),
+    derivada(E2, X, D2).
+
+derivada(E1 * E2, X, D) :-
+    derivada(E1, X, D1),
+    derivada(E2, X, D2),
+    D = D1 * E2 + E1 * D2.
+
+derivada(E1 / E2, X, D) :-
+    derivada(E1, X, D1),
+    derivada(E2, X, D2),
+    D = (D1 * E2 - E1 * D2) / (E2 * E2).
+
+derivada(E1 ** N, X, D) :-
+    number(N),
+    N1 is N - 1,
+    D = N * (E1 ** N1) * 1.
+
+%consulta: derivada(x*x + 3*x + 2, x, D), evalua(D, x, 2, R).
+%respuesta: D = 1*x+x*1+(0*x+3*1)+0, R = 7
+-------------------------------------Víctor----------------------------------------------
 ## 🧠 5. Resolución simbólica sencilla
 
 **15.** Resuelva la ecuación:  
