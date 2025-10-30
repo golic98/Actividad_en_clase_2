@@ -105,29 +105,55 @@ derivada(E1 ** N, X, D) :-
 %respuesta: D = 1*x+x*1+(0*x+3*1)+0, R = 7
 % -------------------------------------Víctor----------------------------------------------
 
+% 12. Sume siguientes fracciones simbolicas
+
+frac(Numerador, Denominador).
+
+suma(frac(A, X), frac(B, Y), frac(N, D)) :-
+    N1 is A * Y + B * X,
+    D1 is X * Y,
+    simplificar(N1, D1, N, D).
+
+simplificar(N1, D1, N, D):-
+    Iter is 2,
+    maxDivisor(N1, D1, R, Iter),
+    N is N1 // R,
+    D is D1 // R.
+
+maxDivisor(N, D, N, I).
+maxDivisor(N, D, D, I).
+
+maxDivisor(N, D, R, Iterate) :-
+    ((N mod Iterate) =:= 0 , (D mod Iterate) =:= 0 ->
+        R is Iterate,
+        true;
+        maxDivisor(N, D, R, Iterate + 1)
+    ).
+
+
 % ## 🧠 5. Resolución simbólica sencilla
 
-**15.** Resuelva la ecuación:  
+% **15.** Resuelva la ecuación:  
 % Caso donde la variable aparece primero: X + N = M.
 variable_primero(X + N = M, X, V) :-
     number(N), number(M),
     V is M - N.
 % ```prolog
-% ?- resuelve(x + 3 = 7, x, V).
+% ?- variable_primero(x + 3 = 7, x, V).
 % V = 4.
 % ```
 
-**16.** Pruebe el caso donde la variable aparece al final: 
+% **16.** Pruebe el caso donde la variable aparece al final: 
 % Caso donde la variable aparece como segundo sumando: N + X = M.
 segundo_sumando(N + X = M, X, V) :-
     number(N), number(M),
     V is M - N. 
 % ```prolog
-% ?- resuelve(5 + x = 10, x, V).
+% ?- segundo_sumando(5 + x = 10, x, V).
 % V = 5.
 % ```
 
-**17.** Cree una ecuación nueva y resuélvala simbólicamente (de la forma `x + N = M` o `N + x = M`).
+% **17.** Cree una ecuación nueva y resuélvala simbólicamente (de la forma `x + N = M` o `N + x = M`).
 resuelve(Ecuacion, X, V) :-
     (   Ecuacion = (N + X = M)
     ;   Ecuacion = (X + N = M)
