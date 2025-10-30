@@ -1,3 +1,38 @@
+## 🔹 1. Simplificación simbólicza
+
+% --- Simplificador que acepta términos escritos con +(A,B) y *(A,B) ---
+
+% Variables y atómicos quedan igual
+simplifica(T, T) :- var(T), !.
+simplifica(T, T) :- atomic(T), !.
+
+% Si es una suma o producto (se descompone con =..), simplificamos recursivamente
+simplifica(T, R) :-
+    T =.. [Op, A, B],
+    (Op == '+' ; Op == '*'), !,
+    simplifica(A, A1),
+    simplifica(B, B1),
+    simplify_op(Op, A1, B1, R).
+
+% Caso por defecto: no sabido cómo simplificar más
+simplifica(T, T).
+
+% --- reglas específicas para + ---
+simplify_op('+', 0, B, B) :- !.
+simplify_op('+', A, 0, A) :- !.
+simplify_op('+', A, B, R) :-
+    R =.. ['+', A, B].
+
+% --- reglas específicas para * ---
+simplify_op('*', 0, _, 0) :- !.
+simplify_op('*', _, 0, 0) :- !.
+simplify_op('*', 1, B, B) :- !.
+simplify_op('*', A, 1, A) :- !.
+simplify_op('*', A, B, R) :-
+    R =.. ['*', A, B].
+
+
+
 ## 🧠 5. Resolución simbólica sencilla
 
 **15.** Resuelva la ecuación:  
